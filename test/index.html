@@ -1,117 +1,161 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog Minimalista</title>
   <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-      color: #333;
-    }
-    header {
-      background: #222;
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
-    }
-    main {
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
+    header { background: #222; color: #fff; padding: 1rem; text-align: center; font-size: 1.5rem; }
+    nav {
+      background: #444;
       display: flex;
-      flex-direction: column;
-      max-width: 800px;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.75rem 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+    nav a:hover { text-decoration: underline; }
+    main {
+      max-width: 90%;
       margin: 2rem auto;
-      padding: 1rem;
       background: white;
+      padding: 2rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    .post-list {
-      list-style: none;
-      padding: 0;
-    }
-    .post-list li {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #ddd;
-    }
-    .post-list a {
-      text-decoration: none;
-      color: #007BFF;
-    }
-    .post-content {
-      display: none;
+    .post-summary { margin-bottom: 2rem; }
+    .post-summary h2 { margin: 0; font-size: 1.25rem; }
+    .post-summary p { margin-top: 0.5rem; color: #555; }
+    .pagination {
+      display: flex;
+      justify-content: space-between;
       margin-top: 2rem;
     }
-    .back-button {
-      margin-top: 1rem;
+    .pagination button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
       cursor: pointer;
-      color: #007BFF;
-      text-decoration: underline;
+    }
+    .pagination button:hover { background: #0056b3; }
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Blog Minimalista</h1>
-  </header>
-  <main>
-    <ul class="post-list" id="postList">Caricamento...</ul>
-    <div class="post-content" id="postContent">
-      <h2 id="postTitle"></h2>
-      <p id="postBody"></p>
-      <div class="back-button" onclick="goHome()">← Torna alla lista</div>
-    </div>
+  <header>Blog Minimalista</header>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Articles</a>
+    <a href="#">About</a>
+    <a href="#">Contacts</a>
+  </nav>
+  <main id="mainContent">
+    <!-- Contenuto dinamico inserito via JS -->
   </main>
+  <footer>
+    &copy; 2025 Blog Minimalista. Tutti i diritti riservati.
+  </footer>
 
   <script>
     const posts = [
-      { slug: "benvenuto", title: "Benvenuto" },
-      { slug: "github-pages", title: "GitHub Pages" },
-      { slug: "design-minimale", title: "Design Minimale" }
+      { slug: "benvenuto", title: "Benvenuto", excerpt: "Introduzione al blog." },
+      { slug: "github-pages", title: "GitHub Pages", excerpt: "Come funziona il deploy." },
+      { slug: "design-minimale", title: "Design Minimale", excerpt: "Perché scegliere un layout semplice." },
+      { slug: "privacy", title: "Privacy e dati", excerpt: "Come gestiamo le informazioni." },
+      { slug: "performance", title: "Ottimizzazione Performance", excerpt: "Tecniche per migliorare la velocità." },
+      { slug: "accessibilita", title: "Accessibilità Web", excerpt: "Un sito per tutti." },
     ];
 
-    const postParam = new URLSearchParams(window.location.search).get("post");
-    const postList = document.getElementById("postList");
-    const postContent = document.getElementById("postContent");
-    const postTitle = document.getElementById("postTitle");
-    const postBody = document.getElementById("postBody");
+    let currentIndex = 0;
+    const urlParam = new URLSearchParams(location.search).get("post");
+    const main = document.getElementById("mainContent");
 
-    function showPost(post) {
-      postTitle.textContent = post.title;
-      postBody.textContent = post.body;
-      postList.style.display = "none";
-      postContent.style.display = "block";
-    }
+    function renderList() {
+      main.innerHTML = "";
+      const list = document.createElement("div");
 
-    function goHome() {
-      window.history.pushState({}, "", window.location.pathname);
-      location.reload();
-    }
-
-    if (postParam) {
-      fetch(`posts/${postParam}.json`)
-        .then(res => {
-          if (!res.ok) throw new Error("404");
-          return res.json();
-        })
-        .then(post => showPost(post))
-        .catch(() => {
-          postTitle.textContent = "Post non trovato";
-          postBody.textContent = "";
-          postList.style.display = "none";
-          postContent.style.display = "block";
-        });
-    } else {
-      postList.innerHTML = "";
-      posts.forEach(post => {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.href = `?post=${post.slug}`;
-        a.textContent = post.title;
-        li.appendChild(a);
-        postList.appendChild(li);
+      posts.slice(currentIndex, currentIndex + 5).forEach(post => {
+        const item = document.createElement("div");
+        item.className = "post-summary";
+        item.innerHTML = `
+          <h2><a href="?post=${post.slug}">${post.title}</a></h2>
+          <p>${post.excerpt}</p>
+        `;
+        list.appendChild(item);
       });
+
+      const nav = document.createElement("div");
+      nav.className = "pagination";
+      nav.innerHTML = `
+        <button onclick="previous()" ${currentIndex === 0 ? "disabled" : ""}>Precedente</button>
+        <button onclick="next()" ${(currentIndex + 5 >= posts.length) ? "disabled" : ""}>Successivo</button>
+      `;
+
+      main.appendChild(list);
+      main.appendChild(nav);
+    }
+
+    function renderPost(slug) {
+      fetch(`posts/${slug}.json`)
+        .then(res => res.ok ? res.json() : Promise.reject())
+        .then(post => {
+          main.innerHTML = `
+            <article>
+              <h2>${post.title}</h2>
+              <p>${post.body}</p>
+            </article>
+            <div class="pagination">
+              <button onclick="navigatePost('${getPrevSlug(slug)}')" ${getPrevSlug(slug) ? "" : "disabled"}>Precedente articolo</button>
+              <button onclick="navigatePost('${getNextSlug(slug)}')" ${getNextSlug(slug) ? "" : "disabled"}>Successivo articolo</button>
+            </div>
+          `;
+        })
+        .catch(() => {
+          main.innerHTML = "<p>Post non trovato.</p>";
+        });
+    }
+
+    function previous() {
+      currentIndex = Math.max(0, currentIndex - 5);
+      renderList();
+    }
+
+    function next() {
+      if (currentIndex + 5 < posts.length) currentIndex += 5;
+      renderList();
+    }
+
+    function navigatePost(slug) {
+      if (slug) {
+        window.location.search = `?post=${slug}`;
+      }
+    }
+
+    function getPrevSlug(currentSlug) {
+      const index = posts.findIndex(p => p.slug === currentSlug);
+      return index > 0 ? posts[index - 1].slug : null;
+    }
+
+    function getNextSlug(currentSlug) {
+      const index = posts.findIndex(p => p.slug === currentSlug);
+      return index >= 0 && index < posts.length - 1 ? posts[index + 1].slug : null;
+    }
+
+    if (urlParam) {
+      renderPost(urlParam);
+    } else {
+      renderList();
     }
   </script>
 </body>
