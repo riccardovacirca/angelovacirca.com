@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog Minimalista</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .post-list {
+      list-style: none;
+      padding: 0;
+    }
+    .post-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .post-list a {
+      text-decoration: none;
+      color: #007BFF;
+    }
+    .post-content {
+      display: none;
+      margin-top: 2rem;
+    }
+    .back-button {
+      margin-top: 1rem;
+      cursor: pointer;
+      color: #007BFF;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Blog Minimalista</h1>
+  </header>
+  <main>
+    <ul class="post-list" id="postList">Caricamento...</ul>
+    <div class="post-content" id="postContent">
+      <h2 id="postTitle"></h2>
+      <p id="postBody"></p>
+      <div class="back-button" onclick="goHome()">← Torna alla lista</div>
+    </div>
+  </main>
+
+  <script>
+    const posts = [
+      { slug: "benvenuto", title: "Benvenuto" },
+      { slug: "github-pages", title: "GitHub Pages" },
+      { slug: "design-minimale", title: "Design Minimale" }
+    ];
+
+    const postParam = new URLSearchParams(window.location.search).get("post");
+    const postList = document.getElementById("postList");
+    const postContent = document.getElementById("postContent");
+    const postTitle = document.getElementById("postTitle");
+    const postBody = document.getElementById("postBody");
+
+    function showPost(post) {
+      postTitle.textContent = post.title;
+      postBody.textContent = post.body;
+      postList.style.display = "none";
+      postContent.style.display = "block";
+    }
+
+    function goHome() {
+      window.history.pushState({}, "", window.location.pathname);
+      location.reload();
+    }
+
+    if (postParam) {
+      fetch(`posts/${postParam}.json`)
+        .then(res => {
+          if (!res.ok) throw new Error("404");
+          return res.json();
+        })
+        .then(post => showPost(post))
+        .catch(() => {
+          postTitle.textContent = "Post non trovato";
+          postBody.textContent = "";
+          postList.style.display = "none";
+          postContent.style.display = "block";
+        });
+    } else {
+      postList.innerHTML = "";
+      posts.forEach(post => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = `?post=${post.slug}`;
+        a.textContent = post.title;
+        li.appendChild(a);
+        postList.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
