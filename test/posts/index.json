@@ -1,0 +1,120 @@
+{
+  "posts": [
+    {
+      "file": "benvenuto.md",
+      "title": "Benvenuti nel mio blog sulla lirica",
+      "subtitle": "Un viaggio nell'opera italiana",
+      "date": "2023-10-15",
+      "author": "Giulia Verdi",
+      "tags": ["introduzione", "opera"],
+      "excerpt": "Presentazione del blog dedicato alla grande tradizione lirica italiana",
+      "slug": "benvenuto-nel-blog-lirica"
+    },
+    {
+      "file": "verdi-e-wagner.md",
+      "title": "Verdi vs Wagner",
+      "subtitle": "Due giganti a confronto",
+      "date": "2023-10-20",
+      "author": "Marco Rossi",
+      "tags": ["comparazione", "ottocento"],
+      "excerpt": "Analisi delle differenze tra i due colossi dell'opera ottocentesca",
+      "slug": "verdi-wagner-confronto"
+    },
+    {
+      "file": "aria-nessun-dorma.md",
+      "title": "Nessun dorma: storia di un'aria immortale",
+      "subtitle": "Da Puccini alle colonne sonore",
+      "date": "2023-10-25",
+      "author": "Laura Bianchi",
+      "tags": ["puccini", "aria"],
+      "excerpt": "Il percorso dell'aria più celebre di Turandot nella cultura popolare",
+      "slug": "nessun-dorma-storia"
+    },
+    {
+      "file": "castrati.md",
+      "title": "L'epoca d'oro dei castrati",
+      "subtitle": "Voci perdute della lirica",
+      "date": "2023-11-05",
+      "author": "Paolo Neri",
+      "tags": ["storia", "barocco"],
+      "excerpt": "Il fenomeno dei cantanti evirati che dominarono i palcoscenici europei",
+      "slug": "epoca-castrati"
+    },
+    {
+      "file": "opera-moderna.md",
+      "title": "L'opera nel XXI secolo",
+      "subtitle": "Tra tradizione e innovazione",
+      "date": "2023-11-12",
+      "author": "Elena Conti",
+      "tags": ["contemporaneo", "innovazione"],
+      "excerpt": "Come sta evolvendo il genere lirico nell'era digitale",
+      "slug": "opera-contemporanea"
+    },
+    {
+      "file": "soprano.md",
+      "title": "Il mistero del soprano",
+      "subtitle": "La voce che sfida i limiti",
+      "date": "2023-11-18",
+      "author": "Sofia Marini",
+      "tags": ["voci", "tecnica"],
+      "excerpt": "Analisi delle diverse tipologie di voce sopranile",
+      "slug": "voce-soprano"
+    },
+    {
+      "file": "scala.md",
+      "title": "La Scala: tempio della lirica",
+      "subtitle": "Storia del teatro milanese",
+      "date": "2023-11-25",
+      "author": "Luca Ferrari",
+      "tags": ["teatri", "milano"],
+      "excerpt": "Viaggio attraverso la storia del più celebre teatro d'opera italiano",
+      "slug": "teatro-alla-scala"
+    },
+    {
+      "file": "tenori.md",
+      "title": "I grandi tenori della storia",
+      "subtitle": "Da Caruso a Kaufmann",
+      "date": "2023-12-03",
+      "author": "Roberto Sala",
+      "tags": ["voci", "interpreti"],
+      "excerpt": "Evoluzione della tecnica tenorile attraverso i suoi maggiori esponenti",
+      "slug": "grandi-tenori"
+    },
+    {
+      "file": "belcanto.md",
+      "title": "L'arte del belcanto",
+      "subtitle": "Eleganza e virtuosismo",
+      "date": "2023-12-10",
+      "author": "Anna Greco",
+      "tags": ["tecnica", "ottocento"],
+      "excerpt": "I segreti dello stile vocale che ha definito l'opera italiana",
+      "slug": "tecnica-belcanto"
+    },
+    {
+      "file": "festival.md",
+      "title": "I grandi festival lirici",
+      "subtitle": "Dall'Arena di Verona a Bayreuth",
+      "date": "2023-12-17",
+      "author": "Marco Esposito",
+      "tags": ["eventi", "festival"],
+      "excerpt": "Guida ai principali appuntamenti internazionali per gli amanti dell'opera",
+      "slug": "festival-lirici"
+    }
+  ],
+  "meta": {
+    "title": "Blog di Musica Lirica",
+    "description": "Un viaggio attraverso la grande tradizione operistica italiana e internazionale",
+    "author": "Redazione Lirica",
+    "created": "2023-10-01",
+    "lastUpdated": "2023-12-17",
+    "totalPosts": 10,
+    "categories": [
+      "opera",
+      "storia",
+      "tecnica vocale",
+      "teatri",
+      "interpreti",
+      "eventi"
+    ]
+  }
+}

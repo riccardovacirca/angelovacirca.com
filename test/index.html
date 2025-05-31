@@ -1,163 +1,211 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Angelo Vacirca</title>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
-    header { background: #222; color: #fff; padding: 1rem; text-align: center; font-size: 1.5rem; }
-    nav {
-      background: #444;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 0.75rem 0;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-    }
-    nav a:hover { text-decoration: underline; }
-    main {
-      max-width: 90%;
-      margin: 2rem auto;
-      background: white;
-      padding: 2rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .post-summary { margin-bottom: 2rem; }
-    .post-summary h2 { margin: 0; font-size: 1.25rem; }
-    .post-summary p { margin-top: 0.5rem; color: #555; }
-    .pagination {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 2rem;
-    }
-    .pagination button {
-      background: #007BFF;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-    }
-    .pagination button:hover { background: #0056b3; }
-    footer {
-      background: #222;
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>angelo vacirca - personal blog</title>
+    
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts - Typewriter style -->
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Marked.js - Markdown parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <style>
+        /* Stili incorporati */
+        :root {
+            --typewriter-font: 'Special Elite', cursive;
+            --mono-font: 'Roboto Mono', monospace;
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+        }
+        
+        body {
+            font-family: var(--mono-font);
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            padding-top: 2rem;
+        }
+        
+        .typewriter {
+            font-family: var(--typewriter-font);
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+        
+        .blog-header {
+            border-bottom: 3px double var(--primary-color);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+        
+        .blog-title {
+            font-size: 2.5rem;
+        }
+        
+        .post-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .post-title {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+        }
+        .post-subtitle {
+            font-family: var(--typewriter-font);
+            font-weight: 300;
+            line-height: 1.2;
+            color: #6c757d;
+            border-bottom: 1px dashed #dee2e6;
+            padding-bottom: 0.5rem;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .post-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .post-content {
+            margin-top: 1rem;
+        }
+        
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+        }
+        
+        footer {
+            border-top: 3px double var(--primary-color);
+            margin-top: 3rem;
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+
+        /* Aggiungi questo al tuo CSS esistente */
+        .navbar-custom {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav-item {
+            margin: 0 1rem;
+            position: relative;
+        }
+        
+        .nav-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: var(--typewriter-font);
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-link.active {
+            font-weight: bold;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-item {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>Angelo Vacirca</header>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Articles</a>
-    <a href="#">About</a>
-    <a href="#">Contacts</a>
-  </nav>
-  <main id="mainContent">
-    <!-- Contenuto dinamico inserito via JS -->
-  </main>
-  <footer>
-    &copy; 2025 Angelo Vacirca. Tutti i diritti riservati.
-  </footer>
+    <div class="container">
+        <header class="blog-header text-center">
+            <h1 class="blog-title typewriter">angelo vacirca</h1>
+            <p class="lead">personal blog</p>
 
-  <script>
-    const posts = [
-      { slug: "benvenuto", title: "Benvenuto", excerpt: "Introduzione al blog." },
-      { slug: "mozart", title: "Mozart", excerpt: "Questo articolo..." },
-      { slug: "github-pages", title: "GitHub Pages", excerpt: "Come funziona il deploy." },
-      { slug: "design-minimale", title: "Design Minimale", excerpt: "Perché scegliere un layout semplice." },
-      { slug: "privacy", title: "Privacy e dati", excerpt: "Come gestiamo le informazioni." },
-      { slug: "performance", title: "Ottimizzazione Performance", excerpt: "Tecniche per migliorare la velocità." },
-      { slug: "accessibilita", title: "Accessibilità Web", excerpt: "Un sito per tutti." },
-    ];
-
-    let currentIndex = 0;
-    const urlParam = new URLSearchParams(location.search).get("post");
-    const main = document.getElementById("mainContent");
-
-    function renderList() {
-      main.innerHTML = "";
-      const list = document.createElement("div");
-
-      posts.slice(currentIndex, currentIndex + 5).forEach(post => {
-        const item = document.createElement("div");
-        item.className = "post-summary";
-        item.innerHTML = `
-          <h2><a href="?post=${post.slug}">${post.title}</a></h2>
-          <p>${post.excerpt}</p>
-        `;
-        list.appendChild(item);
-      });
-
-      const nav = document.createElement("div");
-      nav.className = "pagination";
-      nav.innerHTML = `
-        <button onclick="previous()" ${currentIndex === 0 ? "disabled" : ""}>Precedente</button>
-        <button onclick="next()" ${(currentIndex + 5 >= posts.length) ? "disabled" : ""}>Successivo</button>
-      `;
-
-      main.appendChild(list);
-      main.appendChild(nav);
-    }
-
-    function renderPost(slug) {
-      fetch(`posts/${slug}.json`)
-        .then(res => res.ok ? res.json() : Promise.reject())
-        .then(post => {
-          main.innerHTML = `
-            <article>
-              <h2>${post.title}</h2>
-              <p>${post.body}</p>
-            </article>
-            <div class="pagination">
-              <button onclick="navigatePost('${getPrevSlug(slug)}')" ${getPrevSlug(slug) ? "" : "disabled"}>Precedente articolo</button>
-              <button onclick="navigatePost('${getNextSlug(slug)}')" ${getNextSlug(slug) ? "" : "disabled"}>Successivo articolo</button>
+            <!-- Menu orizzontale centrato -->
+            <nav class="navbar-custom">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link active">
+                            <i class="bi bi-house"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/articoli" class="nav-link">
+                            <i class="bi bi-journal-text"></i> Articoli
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/archivio" class="nav-link">
+                            <i class="bi bi-archive"></i> Archivio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/about" class="nav-link">
+                            <i class="bi bi-person"></i> About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contatti" class="nav-link">
+                            <i class="bi bi-envelope"></i> Contatti
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main id="blog-content">
+            <!-- I post verranno inseriti qui via JavaScript -->
+            <div class="text-center my-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Caricamento...</span>
+                </div>
+                <p>Caricamento dei post...</p>
             </div>
-          `;
-        })
-        .catch(() => {
-          main.innerHTML = "<p>Post non trovato.</p>";
-        });
-    }
-
-    function previous() {
-      currentIndex = Math.max(0, currentIndex - 5);
-      renderList();
-    }
-
-    function next() {
-      if (currentIndex + 5 < posts.length) currentIndex += 5;
-      renderList();
-    }
-
-    function navigatePost(slug) {
-      if (slug) {
-        window.location.search = `?post=${slug}`;
-      }
-    }
-
-    function getPrevSlug(currentSlug) {
-      const index = posts.findIndex(p => p.slug === currentSlug);
-      return index > 0 ? posts[index - 1].slug : null;
-    }
-
-    function getNextSlug(currentSlug) {
-      const index = posts.findIndex(p => p.slug === currentSlug);
-      return index >= 0 && index < posts.length - 1 ? posts[index + 1].slug : null;
-    }
-
-    if (urlParam) {
-      renderPost(urlParam);
-    } else {
-      renderList();
-    }
-  </script>
+        </main>
+        
+        <footer class="mt-5">
+            <p>© <span id="current-year"></span> angelo vacirca - Tutti i diritti riservati</p>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
