@@ -73,13 +73,13 @@ function parseMarkdownWithFrontMatter(content) {
 // Funzione per caricare i post
 async function loadPosts() {
     try {
-        const indexResponse = await fetch('/test/posts/index.json');
+        const indexResponse = await fetch('posts/index.json');
         if (!indexResponse.ok) throw new Error('Failed to load post index');
         
         const { posts } = await indexResponse.json();
         
         const postPromises = posts.map(async post => {
-            const response = await fetch(`/test/posts/${post.file}`);
+            const response = await fetch(`posts/${post.file}`);
             if (!response.ok) throw new Error(`Failed to load ${post.file}`);
             
             const content = await response.text();
