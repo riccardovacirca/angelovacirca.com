@@ -14,7 +14,9 @@
     Incolla più di un link se vuoi usare più font
     -->
     <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
@@ -23,9 +25,9 @@
 
             /* Modifica queste variabili con i nomi dei font scaricati */
             /* TITOLO DEL SITO: */
-            --site-title-font: 'Saira Condensed', serif;
+            --site-title-font: 'Montserrat Alternates', serif;
             /* MENU DI NAVIGAZIONE: */
-            --site-nav-font: 'Saira Condensed', serif;
+            --site-nav-font: 'Montserrat', serif;
             /* TITOLO DI UN ARTICOLO: */
             --post-title-font: 'Saira Condensed', serif;
             /* SOTTOTITOLO DI UN ARTICOLO: */
@@ -37,9 +39,9 @@
                         Viene visualizzato il primo o gli alrtri in ordine
                         se il primo non è presente
              */
-            --mono-font: 'Trebuchet MS';
+            --mono-font: 'Tahoma','Trebuchet MS';
             /* Colore primario del font: */
-            --primary-color: #2c3e50;
+            --primary-color: #000000;
             /* Colore secondario del font: */
             --secondary-color: #e74c3c;
         }
@@ -47,13 +49,14 @@
             font-family: var(--mono-font);
             line-height: 1.6;
             color: #333;
-            background-color: #f9f9f9;
+            background-color: #ffffff;
             padding-top: 2rem;
         }
         .site-title {
             font-family: var(--site-title-font);
             color: var(--primary-color);
             letter-spacing: 1px;
+            font-weight: 700;
         }
         .blog-header {
             border-bottom: 3px double var(--primary-color);
@@ -64,7 +67,7 @@
             align-items: center;
         }
         .blog-title {
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             margin: 0;
         }
         .post-card {
@@ -133,7 +136,7 @@
             color: var(--primary-color);
             text-decoration: none;
             font-family: var(--site-nav-font);
-            font-size: 1.1rem;
+            font-size: 1.0rem;
             padding: 0.5rem 0;
             transition: color 0.3s ease;
         }
@@ -168,7 +171,7 @@
 <body>
     <div class="container">
         <header class="blog-header">
-            <h1 class="blog-title site-title">ANGELO VACIRCA</h1>
+            <h1 class="blog-title site-title">Angelo Vacirca</h1>
             <!-- Menu orizzontale allineato a destra -->
             <nav class="navbar-custom">
                 <ul class="nav-menu">
