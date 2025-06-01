@@ -110,10 +110,10 @@ function renderPosts(posts) {
     container.innerHTML = posts.map(post => `
         <article class="post-card card mb-4" data-slug="${post.slug}">
             <div class="card-body">
-                <h2 class="post-title typewriter">${post.title}</h2>
+                <h2 class="post-title post-title-font">${post.title}</h2>
                 
                 ${post.subtitle ? `
-                    <h3 class="post-subtitle typewriter text-muted fs-4 mb-3">
+                    <h3 class="post-subtitle post-subtitle-font text-muted fs-4 mb-3">
                         ${post.subtitle}
                     </h3>
                 ` : ''}

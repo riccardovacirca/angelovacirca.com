@@ -3,27 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>angelo vacirca - personal blog</title>
-    
-
-    <!-- Bootstrap CSS -->
+    <title>angelo vacirca</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <!-- Google Fonts - Typewriter style -->
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Marked.js - Markdown parser -->
+
+
+    <!--
+    Google Fonts - Incolla qui il link con il parametro family
+    Esempio: family=Saira+Condensed
+    Incolla più di un link se vuoi usare più font
+    -->
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    
     <style>
-        /* Stili incorporati */
         :root {
-            --typewriter-font: 'Special Elite', cursive;
-            --mono-font: 'Roboto Mono', monospace;
+            
+
+            /* Modifica queste variabili con i nomi dei font scaricati */
+            /* TITOLO DEL SITO: */
+            --site-title-font: 'Saira Condensed', serif;
+            /* MENU DI NAVIGAZIONE: */
+            --site-nav-font: 'Saira Condensed', serif;
+            /* TITOLO DI UN ARTICOLO: */
+            --post-title-font: 'Saira Condensed', serif;
+            /* SOTTOTITOLO DI UN ARTICOLO: */
+            --post-subtitle-font: 'Saira Condensed', serif;
+            /*
+            Altri contenuti del sito. Uno a scelta tra questi:
+            'Trebuchet MS','Tahoma','Georgia','Verdana','Roboto Mono','monospace'
+            Consiglio:  Usane 3 in sequenza separati da virgola
+                        Viene visualizzato il primo o gli alrtri in ordine
+                        se il primo non è presente
+             */
+            --mono-font: 'Trebuchet MS';
+            /* Colore primario del font: */
             --primary-color: #2c3e50;
+            /* Colore secondario del font: */
             --secondary-color: #e74c3c;
         }
-        
         body {
             font-family: var(--mono-font);
             line-height: 1.6;
@@ -31,23 +50,23 @@
             background-color: #f9f9f9;
             padding-top: 2rem;
         }
-        
-        .typewriter {
-            font-family: var(--typewriter-font);
+        .site-title {
+            font-family: var(--site-title-font);
             color: var(--primary-color);
             letter-spacing: 1px;
         }
-        
         .blog-header {
             border-bottom: 3px double var(--primary-color);
             margin-bottom: 2rem;
             padding-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
         .blog-title {
             font-size: 2.5rem;
+            margin: 0;
         }
-        
         .post-card {
             background: white;
             border: 1px solid #ddd;
@@ -56,7 +75,6 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
-        
         .post-card:hover {
             transform: translateY(-5px);
         }
@@ -66,7 +84,7 @@
             color: var(--secondary-color);
         }
         .post-subtitle {
-            font-family: var(--typewriter-font);
+            font-family: var(--post-subtitle-font);
             font-weight: 300;
             line-height: 1.2;
             color: #6c757d;
@@ -75,23 +93,19 @@
             margin-top: -0.5rem;
             margin-bottom: 1rem;
         }
-        
         .post-meta {
             font-size: 0.9rem;
             color: #666;
             margin-bottom: 1rem;
         }
-        
         .post-content {
             margin-top: 1rem;
         }
-        
         .post-content img {
             max-width: 100%;
             height: auto;
             margin: 1rem 0;
         }
-        
         footer {
             border-top: 3px double var(--primary-color);
             margin-top: 3rem;
@@ -99,67 +113,63 @@
             text-align: center;
             font-size: 0.9rem;
         }
-
-
-        /* Aggiungi questo al tuo CSS esistente */
         .navbar-custom {
             display: flex;
-            justify-content: center;
-            margin: 2rem 0;
             padding: 0;
-            background-color: #f8f9fa;
-            border-top: 1px solid #dee2e6;
-            border-bottom: 1px solid #dee2e6;
+            background-color: transparent;
+            border: none;
         }
-        
         .nav-menu {
             display: flex;
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        
         .nav-item {
-            margin: 0 1rem;
+            margin-left: 2rem;
             position: relative;
         }
-        
         .nav-link {
             color: var(--primary-color);
             text-decoration: none;
-            font-family: var(--typewriter-font);
+            font-family: var(--site-nav-font);
             font-size: 1.1rem;
             padding: 0.5rem 0;
             transition: color 0.3s ease;
         }
-        
         .nav-link:hover {
             color: var(--secondary-color);
         }
-        
         .nav-link.active {
             font-weight: bold;
             border-bottom: 2px solid var(--secondary-color);
         }
-        
         @media (max-width: 768px) {
-            .nav-menu {
+            .blog-header {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
+            }
+            .blog-title {
+                margin-bottom: 1rem;
+            }
+            .navbar-custom {
+                width: 100%;
+            }
+            .nav-menu {
+                flex-wrap: wrap;
+                gap: 1rem;
             }
             .nav-item {
-                margin: 0.5rem 0;
+                margin-left: 0;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header class="blog-header text-center">
-            <h1 class="blog-title typewriter">angelo vacirca</h1>
-            <p class="lead">personal blog</p>
-
-            <!-- Menu orizzontale centrato -->
+        <header class="blog-header">
+            <h1 class="blog-title site-title">ANGELO VACIRCA</h1>
+            <!-- Menu orizzontale allineato a destra -->
             <nav class="navbar-custom">
                 <ul class="nav-menu">
                     <li class="nav-item">
@@ -190,7 +200,6 @@
                 </ul>
             </nav>
         </header>
-        
         <main id="blog-content">
             <!-- I post verranno inseriti qui via JavaScript -->
             <div class="text-center my-5">
@@ -200,7 +209,6 @@
                 <p>Caricamento dei post...</p>
             </div>
         </main>
-        
         <footer class="mt-5">
             <p>© <span id="current-year"></span> angelo vacirca - Tutti i diritti riservati</p>
         </footer>
