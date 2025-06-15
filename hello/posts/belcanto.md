@@ -6,7 +6,9 @@ author: "Anna Greco"
 tags: ["tecnica", "ottocento"]
 ---
 
-# Caratteristiche distintive
+## Il mio articolo si Wagner
+
+Riccardo Wagner era molto figo.
 
 - **Fioriture** elaborate
 - **Passaggio di registro** impercettibile
@@ -16,3 +18,6 @@ tags: ["tecnica", "ottocento"]
 - *Il barbiere di Siviglia* (Rossini)
 - *Norma* (Bellini)
 - *Lucia di Lammermoor* (Donizetti)
+
+(http://angelovacirca.com/hello/ciao)[Vai al link....]
+

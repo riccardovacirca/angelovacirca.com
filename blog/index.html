@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angelo Vacirca</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 70px;
+        }
+        
+        .navbar-custom {
+            background: linear-gradient(135deg, #ffffff 100%, #ffffff 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: black !important;
+        }
+        
+        .navbar-nav .nav-link {
+            color: rgba(0,0,0,0.9) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: blueviolet !important;
+            transform: translateY(-1px);
+        }
+        
+        .jumbotron-custom {
+            height: 500px;
+            /* background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'); */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('img/angelo_conferenza.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+
+            background-size: cover;
+            background-position: 0px 900px;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .jumbotron-content {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .btn-custom {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            border: none;
+            padding: 12px 30px;
+            font-weight: bold;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+        
+        .card-horizontal {
+            border: none;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .card-horizontal:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .card-horizontal img {
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-horizontal:hover img {
+            transform: scale(1.05);
+        }
+        
+        .blog-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .blog-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .archive-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            height: fit-content;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 90px;
+        }
+        
+        .archive-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        
+        .archive-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .archive-item {
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+        }
+        
+        .archive-item:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-left-color: #667eea;
+            transform: translateX(5px);
+        }
+        
+        .footer-custom {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .blog-meta {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-title {
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .section-divider {
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            height: 2px;
+            margin: 3rem 0;
+            border-radius: 1px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Fixed -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Angelo Vacirca</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#articoli">Articoli</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Chi sono</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contatti">Contatti</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron-custom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 jumbotron-content">
+                    <h1 class="display-6 fw-bold mb-6">Meditazioni wagneriane</h1>
+                    <p class="lead mb-4">Tre momenti di cultura wagneriana. Riflessioni sull'opera con il maestro Camillo Palmeri ai Cantieri culturali di Palermo</p>
+                    <button class="btn btn-custom btn-lg">Esplora Ora</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cards Orizzontali -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-horizontal">
+                    <div class="row g-0">
+                        <div class="col-md-8">
+                            <div class="card-body p-4">
+                                <h3 class="card-title blog-title">Innovazione Tecnologica 2025</h3>
+                                <p class="card-text">L'intelligenza artificiale sta rivoluzionando ogni aspetto della nostra vita quotidiana. Scopri come le nuove tecnologie stanno cambiando il modo in cui lavoriamo, comunichiamo e viviamo le nostre esperienze digitali.</p>
+                                <p class="blog-meta"><small>Pubblicato il 15 Marzo 2025</small></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="img-fluid h-100" alt="Tecnologia">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-horizontal">
+                    <div class="row g-0">
+                        <div class="col-md-8">
+                            <div class="card-body p-4">
+                                <h3 class="card-title blog-title">Sostenibilità Digitale</h3>
+                                <p class="card-text">Il futuro è verde anche nel mondo digitale. Esplora le soluzioni innovative per ridurre l'impatto ambientale delle tecnologie e costruire un ecosistema digitale più sostenibile per le generazioni future.</p>
+                                <p class="blog-meta"><small>Pubblicato il 10 Marzo 2025</small></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="img-fluid h-100" alt="Natura">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Sezione Blog con Sidebar -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Area Articoli -->
+            <div class="col-lg-9">
+                <div class="blog-section">
+                    <div class="blog-meta">5 Giugno 2025 • Tecnologia</div>
+                    <h2 class="blog-title">Il Futuro dell'Intelligenza Artificiale</h2>
+                    <p>L'intelligenza artificiale continua a evolversi a un ritmo senza precedenti. Le nuove architetture neurali stanno aprendo possibilità che fino a poco tempo fa sembravano fantascienza. Dai sistemi di elaborazione del linguaggio naturale alle reti neurali quantistiche, il panorama tecnologico si sta trasformando rapidamente.</p>
+                    <p>Le applicazioni pratiche di queste tecnologie spaziano dalla medicina personalizzata alla gestione intelligente delle città. I ricercatori stanno lavorando per rendere l'IA non solo più potente, ma anche più etica e trasparente, affrontando le sfide della spiegabilità e della responsabilità algoritmica.</p>
+                    <a href="#" class="btn btn-outline-primary">Leggi tutto</a>
+                </div>
+
+                <div class="blog-section">
+                    <div class="blog-meta">2 Giugno 2025 • Innovazione</div>
+                    <h2 class="blog-title">Blockchain e Web3: La Nuova Internet</h2>
+                    <p>La tecnologia blockchain sta rivoluzionando il concetto stesso di internet. Il Web3 promette di restituire il controllo dei dati agli utenti, creando un ecosistema digitale più democratico e decentralizzato. Le applicazioni vanno oltre le criptovalute, abbracciando settori come l'arte digitale, la finanza decentralizzata e l'identità digitale.</p>
+                    <p>Smart contract sempre più sofisticati stanno automatizzando processi complessi, mentre i NFT stanno ridefinendo il concetto di proprietà digitale. Tuttavia, rimangono sfide importanti legate alla scalabilità e al consumo energetico che richiedono soluzioni innovative.</p>
+                    <a href="#" class="btn btn-outline-primary">Leggi tutto</a>
+                </div>
+
+                <div class="blog-section">
+                    <div class="blog-meta">30 Maggio 2025 • Sostenibilità</div>
+                    <h2 class="blog-title">Green Tech: Tecnologie per un Pianeta Sostenibile</h2>
+                    <p>La tecnologia verde non è più un'opzione, ma una necessità. Le innovazioni nel campo dell'energia rinnovabile, dei materiali sostenibili e dell'economia circolare stanno guidando una rivoluzione silenziosa ma potente. Dalle celle solari perovskite alle batterie a stato solido, il futuro energetico si sta ridisegnando.</p>
+                    <p>L'Internet of Things (IoT) gioca un ruolo cruciale nell'ottimizzazione dei consumi energetici, mentre l'intelligenza artificiale viene impiegata per predire e prevenire gli sprechi. Le smart city del futuro integreranno queste tecnologie per creare ambienti urbani più vivibili e sostenibili.</p>
+                    <a href="#" class="btn btn-outline-primary">Leggi tutto</a>
+                </div>
+            </div>
+            <!-- Sidebar Archivio -->
+            <div class="col-lg-3">
+                <div class="archive-section">
+                    <h4 class="archive-title">Archivio</h4>
+                    <ul class="archive-list">
+                        <li class="archive-item">Giugno 2025 (12)</li>
+                        <li class="archive-item">Maggio 2025 (8)</li>
+                        <li class="archive-item">Aprile 2025 (15)</li>
+                        <li class="archive-item">Marzo 2025 (22)</li>
+                        <li class="archive-item">Febbraio 2025 (18)</li>
+                        <li class="archive-item">Gennaio 2025 (25)</li>
+                        <li class="archive-item">Dicembre 2024 (20)</li>
+                        <li class="archive-item">Novembre 2024 (16)</li>
+                        <li class="archive-item">Ottobre 2024 (19)</li>
+                        <li class="archive-item">Settembre 2024 (14)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-custom">
+        <div class="container">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Il Mio Blog. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling per i link di navigazione
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Effetto parallax per il jumbotron
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.jumbotron-custom');
+            const speed = scrolled * 0.5;
+            if (parallax) {
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+
+        // Animazione al scroll per le sezioni
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Osserva tutte le sezioni del blog
+        document.querySelectorAll('.blog-section, .card-horizontal').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Interattività per l'archivio
+        document.querySelectorAll('.archive-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Rimuovi classe attiva da tutti gli elementi
+                document.querySelectorAll('.archive-item').forEach(el => {
+                    el.classList.remove('active');
+                });
+                // Aggiungi classe attiva all'elemento cliccato
+                this.classList.add('active');
+                
+                // Simula il caricamento degli articoli del mese selezionato
+                console.log('Caricamento articoli per:', this.textContent);
+            });
+        });
+
+        // Effetto typing per il titolo del jumbotron
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Avvia l'animazione quando la pagina è caricata
+        window.addEventListener('load', () => {
+            const title = document.querySelector('.jumbotron-custom h1');
+            if (title) {
+                const originalText = title.textContent;
+                setTimeout(() => {
+                    typeWriter(title, originalText, 100);
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>
